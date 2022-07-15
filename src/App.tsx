@@ -14,7 +14,7 @@ const articles = [
   { type: "Biete", title: "Arabische Cola",img: "coca-colaformflasche-13486650.jpg", text: "Cola aber nur auf Arabisch"},
   { type: "Biete", title: "Gebrauchte Corona Maske", img: "corona-maske-auf-betonflaeche-100-resimage_v-variantBig24x9_w-896.jpg", text:"Eine Corona Maske der zwar gebraucht und dreckig ist aber noch benutzt werden kann"},
   {type: "suche", title:"Roccat Kone Pro", img:"shell.png", text:"Ich suche eine einigermaßen noch benutzbare Roccat Kane Pro, die ich für ein Produkt im wert von 90€-140€ eiuntauschen würde je nachdem ob diese wireless ist oder oder ein Kabel besitzt"},
-  { type: "Biete", title: "Gebrauchte Corona Maske", img: "corona-maske-auf-betonflaeche-100-resimage_v-variantBig24x9_w-896.jpg", text:"Eine Corona Maske die zwar gebraucht und dreckig ist aber noch benutzt werden kann"}
+  { type: "Suche", title:"Roccat Kain 120 aimo",img:"Roccat_Kain.jpg", text:"Ich suche eine Roccat Kain 120 aimo. Die Farbe ist mir dabei egel, mir ist wichtig das die Maus keine Doppelklicks macht."},
 ];
 const loadArticles = () => new Promise<typeof articles>((resolve) => {
   setTimeout(() => resolve(articles), 500);
