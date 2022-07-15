@@ -24,9 +24,14 @@ const loadArticles = (page: number) => new Promise<[typeof articles, number]>((r
 
 const App: Component = () => {
   const [page, setPage] = createSignal(0);
-  const [articleData] = createResource(page, loadArticles);
+  const [articleData, { refetch }] = createResource(page, loadArticles);
   const articlelist = createMemo(() => articleData()?.[0]);
   const lastPage = createMemo(() => articleData()?.[1] || 0);
+  let typeBieteRef!: HTMLInputElement;
+  let typeSucheRef!: HTMLInputElement;
+  let titleRef!: HTMLInputElement;
+  let textRef!: HTMLTextAreaElement;
+  
   return (
     <div>
       <header class={styles.header}>
@@ -55,21 +60,32 @@ const App: Component = () => {
           <button onClick={() => setPage(page() + 1)}>Vor</button>
         </Show>
         <section class={styles.form}>
-          <input type="radio" name="art" value="Biete" id="biete" />
+          <input ref={typeBieteRef} type="radio" name="art" value="Biete" id="biete"/>
           <label for="biete">Biete</label>       
-          <input type="radio" name="art" value="Suche" id="suche" />
+          <input ref={typeSucheRef} type="radio" name="art" value="Suche" id="suche"/>
           <label for="suche">Suche</label>
           <br />
           <label for="title">Überschrift</label>
-          <input type="text" id="title" />
+          <input ref={titleRef} type="text" id="title" />
           <br />
           <label for="pic">Bild</label>
           <input type="file" id="pic" />
           <br />
           <label for="text">Beschreibung</label>
-          <textarea id="text"></textarea>
+          <textarea ref={textRef} id="text"></textarea>
           <br />
-          <button>Angebot absenden</button>
+          <button onClick={() => {
+            const newType = typeBieteRef.checked ? typeBieteRef.value : typeSucheRef.checked ? typeSucheRef.value : '';
+            const newTitle = titleRef.value;
+            const newText = textRef.value;
+            if (newType && newTitle && newText) {
+              articles.push({ type: newType, img: 'angebot.jpg', title: newTitle, text: newText });
+              typeBieteRef.checked = true;
+              titleRef.value = '';
+              textRef.value = '';
+              refetch();
+            }
+          }}>Angebot absenden</button>
         </section>
       </main>
     </div>
