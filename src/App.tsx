@@ -3,7 +3,7 @@ import { Component, createMemo, createResource, createSignal, For, Show } from '
 import logo from './logo.svg';
 import styles from './App.module.css';
 
-const articles = [
+let articles = [
   { type: "Biete", title: "Nissan Skyline GTR R-34", img: "angebot.jpg", text: "Dieser wagen der Marke Nissan hat 280PS und kann maximal 180KM/h schnell fahren. Dieses Modell ist erst 75.068KM weit gefahren und wurde 2001 gebaut.\nUrsprünglich hat dieses Auto ca. 100.000 Geld gekostet." },
   { type: "Suche", title:"Fußball", img: "Fussball.webp", text:"Ein Fußball im guten zustand"},
   { type: "Suche", title: "E-Gitarre", img:"hellokitty.png", text:"Ich suche eine Fender Squier Hello Kitty. \n  Sollte in Gutem Zustand sein."},
@@ -17,6 +17,10 @@ const articles = [
 ];
 const pagelength = 5;
 const loadArticles = (page: number) => new Promise<[typeof articles, number]>((resolve) => {
+  const savedArticles = JSON.parse(localStorage.getItem('articles') || '""');
+  if (savedArticles && Array.isArray(savedArticles) && savedArticles.length) {
+    articles = savedArticles;
+  }
   const start = page * pagelength;
   const end = start + pagelength;
   setTimeout(() => resolve([articles.slice(start, end), Math.floor((articles.length - 1) / pagelength)]), 500);
@@ -89,6 +93,7 @@ const App: Component = () => {
             const newText = textRef.value;
             if (newType && newTitle && newText) {
               articles.push({ type: newType, img: imgString, title: newTitle, text: newText });
+              localStorage.setItem('articles', JSON.stringify(articles));
               typeBieteRef.checked = true;
               titleRef.value = '';
               imgRef.value = '';
