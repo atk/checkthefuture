@@ -1,2 +1,7 @@
 header { line-height: 6em; }
 header img { height: 6em; width: auto; float: left; margin: 0 1em 0 1em; }
+.main {margin:1em; position: relative;}
+.main article img {width: auto; height: auto; max-width: 50%; max-height: 50vh;}
+.form label + input {margin-left: 1em;}
+.form textarea {width: 100%;}
+.form br + label {display:inline-block; width: 8em;}
