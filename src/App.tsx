@@ -15,6 +15,7 @@ const App: Component = () => {
           Herzlich Willkommen zum Tauschportal der CBG-Wörth!
           Dieses nicht kommerzielles Angebot richtet sich alleine an die Schülerinnen und Schüler der CBG-Wörth.
         </p>
+        
         <article>
           <h2>
             Biete: Nissan Skyline GTR R-34
@@ -25,24 +26,27 @@ const App: Component = () => {
             Ursprünglich hat dieses Auto ca. 100.000 Geld gekostet.
           </p>
         </article>
+        <article>
+        <h2>Suche: Fußball</h2>
+        <img src="src/assets/Fussball.webp" />
+        <p>
+          Ein Fußball im guten zustand
+        </p>
+        </article>
         <section class={styles.form}>
-          <h3>
-            Neues Gebot erstellen
-          </h3>
-          <input type="radio" name="art" value="Biete" id="biete" checked/>
+          <input type="radio" name="art" value="Biete" id="biete" checked />
           <label for="biete">Biete</label>
-          <input type="radio" name="art" value="Suche" id="suche"/>
+          <input type="radio" name="art" value="Suche" id="suche" />
           <label for="suche">Suche</label>
           <br />
-          <label for="title">Überschrift: </label>
-          <input type="text"></input>
+          <label for="title">Überschrift</label>
+          <input type="text" id="title" />
           <br />
-          <label for="picture">Bild einfügen!</label>
+          <label for="pic">Bild (optional)</label>
+          <input type="file" id="pic" />
           <br />
-          <input type="file" id="picture" />
-          <br />
-          <label for="text">Beschreibung</label>
-          <textarea id="text"></textarea>
+          <label for="desc">Beschreibung</label>
+          <textarea id="desc"></textarea>
           <br />
           <button>Angebot erstellen</button>
         </section>
