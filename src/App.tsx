@@ -12,8 +12,7 @@ const articles = [
   { type:"Suche", title: "Plastik Ente", img: "Plastickente.jpeg", text: "Suche Plastik Ente zum Baden"},
   { type: "Suche", title: "Fußball", img: "Fussball.webp", text:"Ein Fußball im guten zustand"},
   { type: "Biete", title: "Arabische Cola",img: "coca-colaformflasche-13486650.jpg", text: "Cola aber nur auf Arabisch"},
-  { type: "Biete", title: "Gebrauchte Corona Maske", img: "corona-maske-auf-betonflaeche-100-resimage_v-variantBig24x9_w-896.jpg", text:"Eine Corona Maske der zwar gebraucht und dreckig ist aber noch benutzt werden kann"},
-  {type: "suche", title:"Roccat Kone Pro", img:"shell.png", text:"Ich suche eine einigermaßen noch benutzbare Roccat Kane Pro, die ich für ein Produkt im wert von 90€-140€ eiuntauschen würde je nachdem ob diese wireless ist oder oder ein Kabel besitzt"},
+  { type: "suche", title:"Roccat Kone Pro", img:"shell.png", text:"Ich suche eine einigermaßen noch benutzbare Roccat Kane Pro, die ich für ein Produkt im wert von 90€-140€ eiuntauschen würde je nachdem ob diese wireless ist oder oder ein Kabel besitzt"},
   { type: "Biete", title: "Gebrauchte Corona Maske", img: "corona-maske-auf-betonflaeche-100-resimage_v-variantBig24x9_w-896.jpg", text:"Eine Corona Maske die zwar gebraucht und dreckig ist aber noch benutzt werden kann"}
 ];
 const loadArticles = () => new Promise<typeof articles>((resolve) => {
