@@ -30,6 +30,8 @@ const App: Component = () => {
   let typeBieteRef!: HTMLInputElement;
   let typeSucheRef!: HTMLInputElement;
   let titleRef!: HTMLInputElement;
+  let imgRef!: HTMLInputElement;
+  let imgString = '';
   let textRef!: HTMLTextAreaElement;
   
   return (
@@ -47,7 +49,7 @@ const App: Component = () => {
         <For each={articlelist()} fallback={"Loading..."}>
           {(article) => (<article>
             <h2>{article.type}: {article.title}</h2>
-            <img src={`src/assets/${article.img}`} />
+            <img src={/^data/.test(article.img) ? article.img : `src/assets/${article.img}`} />
             <p>
               {article.text}
             </p> 
@@ -69,19 +71,28 @@ const App: Component = () => {
           <input ref={titleRef} type="text" id="title" />
           <br />
           <label for="pic">Bild</label>
-          <input type="file" id="pic" />
+          <input ref={imgRef} type="file" id="pic" onChange={() => {
+            const reader = new FileReader();
+            const file = imgRef.files?.[0];
+            reader.addEventListener('load', () => { imgString = reader.result as string; });
+            if (file) {
+              reader.readAsDataURL(file);
+            }
+          }}/>
           <br />
           <label for="text">Beschreibung</label>
           <textarea ref={textRef} id="text"></textarea>
           <br />
-          <button onClick={() => {
+          <button onClick={async () => {
             const newType = typeBieteRef.checked ? typeBieteRef.value : typeSucheRef.checked ? typeSucheRef.value : '';
             const newTitle = titleRef.value;
             const newText = textRef.value;
             if (newType && newTitle && newText) {
-              articles.push({ type: newType, img: 'angebot.jpg', title: newTitle, text: newText });
+              articles.push({ type: newType, img: imgString, title: newTitle, text: newText });
               typeBieteRef.checked = true;
               titleRef.value = '';
+              imgRef.value = '';
+              imgString = '';
               textRef.value = '';
               refetch();
             }
