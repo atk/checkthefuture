@@ -14,6 +14,7 @@ let articles = [
   { type: "Biete", title: "Gebrauchte Corona Maske", img: "corona-maske-auf-betonflaeche-100-resimage_v-variantBig24x9_w-896.jpg", text:"Eine Corona Maske der zwar gebraucht und dreckig ist aber noch benutzt werden kann"},
   {type: "suche", title:"Roccat Kone Pro", img:"shell.png", text:"Ich suche eine einigermaßen noch benutzbare Roccat Kane Pro, die ich für ein Produkt im wert von 90€-140€ eiuntauschen würde je nachdem ob diese wireless ist oder oder ein Kabel besitzt"},
   { type: "Suche", title:"Roccat Kain 120 aimo",img:"Roccat_Kain.jpg", text:"Ich suche eine Roccat Kain 120 aimo. Die Farbe ist mir dabei egel, mir ist wichtig das die Maus keine Doppelklicks macht."},
+  { type: "Biete", title: "Mojang", img: "Download (1).png", text:"Ich der Enwickler von Microsoft würde gerne Mojang verkaufen weil ich gestern Minecraft ausprobiert habe und es war scheiße"},
 ];
 const pagelength = 5;
 const loadArticles = (page: number) => new Promise<[typeof articles, number]>((resolve) => {
