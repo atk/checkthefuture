@@ -6,7 +6,8 @@ import styles from './App.module.css';
 const articles = [
   { type: "Biete", title: "Nissan Skyline GTR R-34", img: "angebot.jpg", text: "Dieser wagen der Marke Nissan hat 280PS und kann maximal 180KM/h schnell fahren. Dieses Modell ist erst 75.068KM weit gefahren und wurde 2001 gebaut.\nUrsprünglich hat dieses Auto ca. 100.000 Geld gekostet." },
   { type: "Suche", title:"Fußball", img: "Fussball.webp", text:"Ein Fußball im guten zustand"},
-  { type: "Suche", title: "E-Gitarre", img:"hellokitty.png", text:"Ich suche eine Fender Squier Hello Kitty. \n  Sollte in Gutem Zustand sein."}
+  { type: "Suche", title: "E-Gitarre", img:"hellokitty.png", text:"Ich suche eine Fender Squier Hello Kitty. \n  Sollte in Gutem Zustand sein."},
+  { type: "Suche", title: "Computer ITT 3030", img: "index.jpg", text: "Ich suche einen ITT 3030 funktionsbereit."}
 ];
 const loadArticles = () => new Promise<typeof articles>((resolve) => {
   setTimeout(() => resolve(articles), 500);
