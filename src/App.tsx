@@ -8,8 +8,8 @@ const articles = [
   { type: "Suche", title:"Fußball", img: "Fussball.webp", text:"Ein Fußball im guten zustand"},
   { type: "Suche", title: "E-Gitarre", img:"hellokitty.png", text:"Ich suche eine Fender Squier Hello Kitty. \n  Sollte in Gutem Zustand sein."},
   { type: "Suche", title: "Computer ITT 3030", img: "index.jpg", text: "Ich suche einen ITT 3030 funktionsbereit."},
-  {type: "Biete", title: "Gebrauchte Tastatur", img: "tastatur.jpeg", text: "Eine Schwarze tastatur die Gebraucht wurde"},
-  {type:"Suche", title: "Plastik Ente", img: "Plastickente.jpeg", text: "Suche Plastik Ente zum Baden"},
+  { type: "Biete", title: "Gebrauchte Tastatur", img: "tastatur.jpeg", text: "Eine Schwarze tastatur die Gebraucht wurde"},
+  { type:"Suche", title: "Plastik Ente", img: "Plastickente.jpeg", text: "Suche Plastik Ente zum Baden"},
   { type: "Suche", title: "Fußball", img: "Fussball.webp", text:"Ein Fußball im guten zustand"},
   { type: "Biete", title: "Arabische Cola",img: "coca-colaformflasche-13486650.jpg", text: "Cola aber nur auf Arabisch"},
   { type: "Biete", title: "Gebrauchte Corona Maske", img: "corona-maske-auf-betonflaeche-100-resimage_v-variantBig24x9_w-896.jpg", text:"Eine Corona Maske die zwar gebraucht und dreckig ist aber noch benutzt werden kann"}
