@@ -5,7 +5,8 @@ import styles from './App.module.css';
 
 const articles = [
   { type: "Biete", title: "Nissan Skyline GTR R-34", img: "angebot.jpg", text: "Dieser wagen der Marke Nissan hat 280PS und kann maximal 180KM/h schnell fahren. Dieses Modell ist erst 75.068KM weit gefahren und wurde 2001 gebaut.\nUrsprünglich hat dieses Auto ca. 100.000 Geld gekostet." },
-  { type: "Suche", title:"Fußball", img: "Fussball.webp", text:"Ein Fußball im guten zustand"}
+  { type: "Suche", title:"Fußball", img: "Fussball.webp", text:"Ein Fußball im guten zustand"},
+  { type: "Suche", title: "E-Gitarre", img:"hellokitty.png", text:"Ich suche eine Fender Squier Hello Kitty. \n  Sollte in Gutem Zustand sein."}
 ];
 const loadArticles = () => new Promise<typeof articles>((resolve) => {
   setTimeout(() => resolve(articles), 500);
@@ -14,7 +15,7 @@ const loadArticles = () => new Promise<typeof articles>((resolve) => {
 const App: Component = () => {
   const [articleData] = createResource(loadArticles);
   return (
-    <div class={styles.App}>
+    <div>
       <header class={styles.header}>
         <img src={logo} class={styles.logo} alt="Carl-Benz Gesamtschule" />
         <h1>Tauschportal</h1>
@@ -36,21 +37,21 @@ const App: Component = () => {
         </For>
         
         <section class={styles.form}>
-          <input type="radio" name="art" value="Biete" id="biete" checked />
-          <label for="biete">Biete</label>
+          <input type="radio" name="art" value="Biete" id="biete" />
+          <label for="biete">Biete</label>       
           <input type="radio" name="art" value="Suche" id="suche" />
           <label for="suche">Suche</label>
           <br />
           <label for="title">Überschrift</label>
           <input type="text" id="title" />
           <br />
-          <label for="pic">Bild (optional)</label>
+          <label for="pic">Bild</label>
           <input type="file" id="pic" />
           <br />
-          <label for="desc">Beschreibung</label>
-          <textarea id="desc"></textarea>
+          <label for="text">Beschreibung</label>
+          <textarea id="text"></textarea>
           <br />
-          <button>Angebot erstellen</button>
+          <button>Angebot absenden</button>
         </section>
       </main>
     </div>
