@@ -60,10 +60,16 @@ const App: Component = () => {
           </article>)}
         </For>
         <Show when={page() > 0}>
-          <button onClick={() => setPage(page() - 1)}>Zurück</button>
+          <button onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            setPage(page() - 1);
+          }}>Zurück</button>
         </Show>
         <Show when={page() < lastPage()}>
-          <button onClick={() => setPage(page() + 1)}>Vor</button>
+          <button onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            setPage(page() + 1);
+          }}>Vor</button>
         </Show>
         <section class={styles.form}>
           <input ref={typeBieteRef} type="radio" name="art" value="Biete" id="biete"/>
