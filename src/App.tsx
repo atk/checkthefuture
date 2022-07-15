@@ -1,4 +1,4 @@
-import { Component, createResource, For } from 'solid-js';
+import { Component, createMemo, createResource, createSignal, For, Show } from 'solid-js';
 
 import logo from './logo.svg';
 import styles from './App.module.css';
@@ -15,12 +15,18 @@ const articles = [
   {type: "suche", title:"Roccat Kone Pro", img:"shell.png", text:"Ich suche eine einigermaßen noch benutzbare Roccat Kane Pro, die ich für ein Produkt im wert von 90€-140€ eiuntauschen würde je nachdem ob diese wireless ist oder oder ein Kabel besitzt"},
   { type: "Suche", title:"Roccat Kain 120 aimo",img:"Roccat_Kain.jpg", text:"Ich suche eine Roccat Kain 120 aimo. Die Farbe ist mir dabei egel, mir ist wichtig das die Maus keine Doppelklicks macht."},
 ];
-const loadArticles = () => new Promise<typeof articles>((resolve) => {
-  setTimeout(() => resolve(articles), 500);
+const pagelength = 5;
+const loadArticles = (page: number) => new Promise<[typeof articles, number]>((resolve) => {
+  const start = page * pagelength;
+  const end = start + pagelength;
+  setTimeout(() => resolve([articles.slice(start, end), Math.floor((articles.length - 1) / pagelength)]), 500);
 });
 
 const App: Component = () => {
-  const [articleData] = createResource(loadArticles);
+  const [page, setPage] = createSignal(0);
+  const [articleData] = createResource(page, loadArticles);
+  const articlelist = createMemo(() => articleData()?.[0]);
+  const lastPage = createMemo(() => articleData()?.[1] || 0);
   return (
     <div>
       <header class={styles.header}>
@@ -33,7 +39,7 @@ const App: Component = () => {
           Dieses nicht kommerzielles Angebot richtet sich alleine an die Schülerinnen und Schüler der CBG-Wörth.
         </p>
 
-        <For each={articleData()} fallback={"Loading..."}>
+        <For each={articlelist()} fallback={"Loading..."}>
           {(article) => (<article>
             <h2>{article.type}: {article.title}</h2>
             <img src={`src/assets/${article.img}`} />
@@ -42,7 +48,12 @@ const App: Component = () => {
             </p> 
           </article>)}
         </For>
-        
+        <Show when={page() > 0}>
+          <button onClick={() => setPage(page() - 1)}>Zurück</button>
+        </Show>
+        <Show when={page() < lastPage()}>
+          <button onClick={() => setPage(page() + 1)}>Vor</button>
+        </Show>
         <section class={styles.form}>
           <input type="radio" name="art" value="Biete" id="biete" />
           <label for="biete">Biete</label>       
